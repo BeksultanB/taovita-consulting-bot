@@ -1,6 +1,7 @@
+const productsReducer = require("./productsReducer");
 const reviewsReducer = require("./reviewsReducer");
 
-const callbackReducers = [reviewsReducer];
+const callbackReducers = [reviewsReducer, productsReducer];
 
 function callbackHandler(query, bot) {
   const [data] = query.data.split("_");

@@ -1,7 +1,7 @@
-const { brandsOptions } = require("../../../entities/options");
+const { productCardKeyboard } = require("../../../entities/keyboards");
 
 const regeneCollagen = {
-  cases: ["REGENE COLLAGEN"],
+  cases: ["REGENE COLLAGEN 🛍"],
   async handler(msg, bot) {
     const chatId = msg.chat.id;
     const photo = "https://taovita.ru/static/img/0723-regene-collagen.png";
@@ -20,7 +20,7 @@ const regeneCollagen = {
     await bot.sendMessage(
       chatId,
       "Выберите бренд, о котором хотите узнать",
-      brandsOptions
+      productCardKeyboard
     );
   },
 };

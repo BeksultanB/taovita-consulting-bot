@@ -1,4 +1,4 @@
-const { mainKeyboard } = require("../../entities/keyboards");
+const { defaultOptions } = require("../../entities/options");
 
 const aboutCompanyReducer = {
   cases: [
@@ -32,26 +32,25 @@ const aboutCompanyReducer = {
       {
         type: "photo",
         media: "https://taovita.ru/static/img/about_pano.jpg",
-        caption1,
+        caption: caption1,
       },
-      { type: "photo", media: "./static/img/taovita_medicine.png", caption2 },
+      {
+        type: "photo",
+        media: "./static/img/taovita_medicine.png",
+        caption: caption2,
+      },
       {
         type: "photo",
         media: "https://taovita.ru/static/img/additional.jpg",
-        caption3,
+        caption: caption3,
       },
     ];
-    const opts = {
-      reply_markup: JSON.stringify({
-        keyboard: mainKeyboard,
-        resize_keyboard: true,
-        one_time_keyboard: true,
-      }),
-    };
-    await bot.sendPhoto(chatId, images[0].media, { caption: caption1 });
-    await bot.sendPhoto(chatId, images[1].media, { caption: caption2 });
-    await bot.sendPhoto(chatId, images[2].media, { caption: caption3 });
-    await bot.sendMessage(chatId, "Вы находитесь на главной", opts);
+    for (const image of images) {
+      const { media, caption } = image;
+      await bot.sendPhoto(chatId, media, { caption });
+    }
+
+    await bot.sendMessage(chatId, "Вы находитесь на главной", defaultOptions);
   },
 };
 

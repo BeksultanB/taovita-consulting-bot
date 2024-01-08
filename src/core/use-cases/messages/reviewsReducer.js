@@ -1,5 +1,5 @@
 const youtubeVideos = require("../../constants/reviews/youtube-videos");
-const { mainKeyboard } = require("../../entities/keyboards");
+const { defaultOptions } = require("../../entities/options");
 
 const reviewsReducer = {
   cases: ["Отзывы ", "отзывы", "Отзывы ↩️"],
@@ -29,13 +29,7 @@ ${youtubeVideos[0].url}`;
     await bot.sendMessage(
       chatId,
       "Используйте кнопки выше для управления отзывами",
-      {
-        reply_markup: {
-          keyboard: mainKeyboard,
-          resize_keyboard: true,
-          one_time_keyboard: true,
-        },
-      }
+      defaultOptions
     );
   },
 };
